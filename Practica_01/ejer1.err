@@ -1,0 +1,3 @@
+Message[301] C:\PROGRAM FILES (X86)\MICROCHIP\MPASM SUITE\P16F877.INC 33 : MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+Warning[203] E:\MICROS\EJER1.ASM 12 : Found opcode in column 1. (GOTO)
+Warning[205] E:\MICROS\EJER1.ASM 13 : Found directive in column 1. (END)
