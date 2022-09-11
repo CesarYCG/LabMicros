@@ -1,0 +1,6 @@
+Warning[205] E:\P3\EJ1.ASM 1 : Found directive in column 1. (processor)
+Message[301] C:\PROGRAM FILES (X86)\MICROCHIP\MPASM SUITE\P16F877.INC 33 : MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+Message[302] E:\P3\EJ1.ASM 10 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\P3\EJ1.ASM 12 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\P3\EJ1.ASM 13 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[205] E:\P3\EJ1.ASM 22 : Found directive in column 1. (END)

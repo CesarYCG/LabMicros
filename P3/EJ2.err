@@ -1,0 +1,18 @@
+Warning[205] E:\P3\EJ2.ASM 1 : Found directive in column 1. (processor)
+Message[301] C:\PROGRAM FILES (X86)\MICROCHIP\MPASM SUITE\P16F877.INC 33 : MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+Warning[207] E:\P3\EJ2.ASM 4 : Found label after column 1. (valor1)
+Warning[207] E:\P3\EJ2.ASM 5 : Found label after column 1. (valor2)
+Warning[207] E:\P3\EJ2.ASM 6 : Found label after column 1. (valor3)
+Warning[207] E:\P3\EJ2.ASM 7 : Found label after column 1. (cte1)
+Warning[207] E:\P3\EJ2.ASM 8 : Found label after column 1. (cte2)
+Warning[207] E:\P3\EJ2.ASM 9 : Found label after column 1. (cte3)
+Message[302] E:\P3\EJ2.ASM 17 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\P3\EJ2.ASM 19 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\P3\EJ2.ASM 20 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[202] E:\P3\EJ2.ASM 82 : Argument out of range.  Least significant bits used.
+Warning[202] E:\P3\EJ2.ASM 84 : Argument out of range.  Least significant bits used.
+Message[305] E:\P3\EJ2.ASM 86 : Using default destination of 1 (file).
+Message[305] E:\P3\EJ2.ASM 88 : Using default destination of 1 (file).
+Message[305] E:\P3\EJ2.ASM 90 : Using default destination of 1 (file).
+Warning[203] E:\P3\EJ2.ASM 92 : Found opcode in column 1. (return)
+Warning[205] E:\P3\EJ2.ASM 93 : Found directive in column 1. (END)
