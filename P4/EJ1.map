@@ -1,0 +1,54 @@
+MPLINK 4.46, Linker
+Linker Map File - Created Thu Jul 29 03:34:06 2004
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000002
+                   .org_2       code   0x000005    program   0x0000aa
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000005    0x000059      
+            86 out of 8454 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   inicio   0x000005    program     static E:\P4\EJ1.asm            
+                    paso1   0x00002f    program     static E:\P4\EJ1.asm            
+                    paso2   0x000032    program     static E:\P4\EJ1.asm            
+                    paso3   0x000037    program     static E:\P4\EJ1.asm            
+                    paso4   0x00003c    program     static E:\P4\EJ1.asm            
+                    paso5   0x000041    program     static E:\P4\EJ1.asm            
+                    paso6   0x000046    program     static E:\P4\EJ1.asm            
+                    paso7   0x00004b    program     static E:\P4\EJ1.asm            
+                    paso8   0x000050    program     static E:\P4\EJ1.asm            
+                    paso9   0x000055    program     static E:\P4\EJ1.asm            
+                   switch   0x00000e    program     static E:\P4\EJ1.asm            
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   inicio   0x000005    program     static E:\P4\EJ1.asm            
+                   switch   0x00000e    program     static E:\P4\EJ1.asm            
+                    paso1   0x00002f    program     static E:\P4\EJ1.asm            
+                    paso2   0x000032    program     static E:\P4\EJ1.asm            
+                    paso3   0x000037    program     static E:\P4\EJ1.asm            
+                    paso4   0x00003c    program     static E:\P4\EJ1.asm            
+                    paso5   0x000041    program     static E:\P4\EJ1.asm            
+                    paso6   0x000046    program     static E:\P4\EJ1.asm            
+                    paso7   0x00004b    program     static E:\P4\EJ1.asm            
+                    paso8   0x000050    program     static E:\P4\EJ1.asm            
+                    paso9   0x000055    program     static E:\P4\EJ1.asm            
+
+
