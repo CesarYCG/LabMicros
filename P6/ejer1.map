@@ -1,0 +1,41 @@
+MPLINK 4.46, Linker
+Linker Map File - Created Fri Nov 04 04:57:30 2022
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000002
+                   .org_1       code   0x000005    program   0x00002e
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000005    0x00001b      
+            24 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+              CONVERTIDOR   0x00000f    program     static E:\P6_LabMicros\ejer1.asm
+                  RETARDO   0x000015    program     static E:\P6_LabMicros\ejer1.asm
+                   inicio   0x000005    program     static E:\P6_LabMicros\ejer1.asm
+                    jloop   0x000017    program     static E:\P6_LabMicros\ejer1.asm
+                    kloop   0x000018    program     static E:\P6_LabMicros\ejer1.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   inicio   0x000005    program     static E:\P6_LabMicros\ejer1.asm
+              CONVERTIDOR   0x00000f    program     static E:\P6_LabMicros\ejer1.asm
+                  RETARDO   0x000015    program     static E:\P6_LabMicros\ejer1.asm
+                    jloop   0x000017    program     static E:\P6_LabMicros\ejer1.asm
+                    kloop   0x000018    program     static E:\P6_LabMicros\ejer1.asm
+
+

@@ -1,0 +1,54 @@
+MPLINK 4.46, Linker
+Linker Map File - Created Fri Nov 04 06:00:54 2022
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000002
+                   .org_2       code   0x000005    program   0x00007c
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000005    0x000042      
+            63 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    CANAL   0x000023    program     static E:\P6_LabMicros\ejer3.asm
+               CANALCINCO   0x000029    program     static E:\P6_LabMicros\ejer3.asm
+                CANALSEIS   0x00002e    program     static E:\P6_LabMicros\ejer3.asm
+               CANALSIETE   0x000033    program     static E:\P6_LabMicros\ejer3.asm
+              CONVERTIDOR   0x000010    program     static E:\P6_LabMicros\ejer3.asm
+                   INICIO   0x000005    program     static E:\P6_LabMicros\ejer3.asm
+                   Mando0   0x000036    program     static E:\P6_LabMicros\ejer3.asm
+                   Mando1   0x000039    program     static E:\P6_LabMicros\ejer3.asm
+                  RETARDO   0x00003c    program     static E:\P6_LabMicros\ejer3.asm
+                    jloop   0x00003e    program     static E:\P6_LabMicros\ejer3.asm
+                    kloop   0x00003f    program     static E:\P6_LabMicros\ejer3.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000005    program     static E:\P6_LabMicros\ejer3.asm
+              CONVERTIDOR   0x000010    program     static E:\P6_LabMicros\ejer3.asm
+                    CANAL   0x000023    program     static E:\P6_LabMicros\ejer3.asm
+               CANALCINCO   0x000029    program     static E:\P6_LabMicros\ejer3.asm
+                CANALSEIS   0x00002e    program     static E:\P6_LabMicros\ejer3.asm
+               CANALSIETE   0x000033    program     static E:\P6_LabMicros\ejer3.asm
+                   Mando0   0x000036    program     static E:\P6_LabMicros\ejer3.asm
+                   Mando1   0x000039    program     static E:\P6_LabMicros\ejer3.asm
+                  RETARDO   0x00003c    program     static E:\P6_LabMicros\ejer3.asm
+                    jloop   0x00003e    program     static E:\P6_LabMicros\ejer3.asm
+                    kloop   0x00003f    program     static E:\P6_LabMicros\ejer3.asm
+
+
