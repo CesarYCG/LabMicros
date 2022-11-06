@@ -1,10 +1,4 @@
-;Pr醕tica 3 - Ejercicio3
-;					PORTD
-; Ve5 > Ve6 y Ve7 -> 001
-; Ve6 > Ve5 y Ve7 -> 011
-; Ve7 > Ve5 y Ve6 -> 111
-
-processor p16f877 ;Versi髇 del procesador a utilizar
+processor 16f877 ;Versi贸n del procesador a utilizar
 include <p16f877.inc> ;Se cargan las librerias y el mapa de memoria
 
 	J EQU 0X20 						;Localidades para la subrutina de retraso 
@@ -16,14 +10,14 @@ include <p16f877.inc> ;Se cargan las librerias y el mapa de memoria
 	CANAL7 EQU H'26' 				;Canal 3 en la localidad 26
 	 
 	org 0h 
-	goto INICIO 					;Su ubicaci髇 es en el espacio de memoria "inicio"
+	goto INICIO 					;Su ubicaci贸n es en el espacio de memoria "inicio"
 	org 5h 							;Se ubica en el espacio de memoria 5 
 
 INICIO:
 	CLRF PORTA 						;Limpiamos el puerto A
 	BSF STATUS, RP0 				;Nos posicionamos en el banco 1 para poder trabajar con TRIS
 	BCF STATUS, RP1 				;Nos cambiamos al banco 1
-	MOVLW 00H 						;Se configura al puerto a y e como anal骻ico
+	MOVLW 00H 						;Se configura al puerto a y e como anal贸gico
 	MOVWF ADCON1 					;Se coloca en ADCON1 para que todo se digital 
 	MOVLW 00H						;Ponemos al puerto D como una salida
 	MOVWF TRISD 					;Se coloca en TRISD
@@ -33,25 +27,25 @@ INICIO:
 	CLRF PORTD 						;Limpiamos el puertoD
 
 CONVERTIDOR:
-	BSF ADCON0, 2 					;Se inicia la conversi髇 de a/d
+	BSF ADCON0, 2 					;Se inicia la conversi贸n de a/d
 	CALL RETARDO 					;Se llama un retardo
-	BCF ADCON0,2 					;Se finaliza la conversi髇 
-	MOVF ADRESH,0 					;Se lee el ediltado de la conversi髇
+	BCF ADCON0,2 					;Se finaliza la conversi贸n 
+	MOVF ADRESH,0 					;Se lee el ediltado de la conversi贸n
 	MOVWF CANAL7 					;Se guarda el primer valor
 	MOVLW b'11110001' 				; Frecuencia de reloj, convertidor a/d
 	MOVWF ADCON0
 	BSF ADCON0,2
 	CALL RETARDO
 	BCF ADCON0, 2 					;Se limpia el carry 
-	MOVF ADRESH,0 					; Se inicia la conversi髇 de a/d
+	MOVF ADRESH,0 					; Se inicia la conversi贸n de a/d
 	MOVWF CANAL6
 
 	MOVLW b'11101001' 				; Frecuencia de reloj, convertidor a/d
 	MOVWF ADCON0
-	BSF ADCON0,2 					; Se inicia la conversi髇 de a/d
+	BSF ADCON0,2 					; Se inicia la conversi贸n de a/d
 	CALL RETARDO 					;Se llama un retardo 
-	BCF ADCON0,2 					;Se finaliza la conversi髇
-	MOVF ADRESH,0 					;Se lee el resultado de la conversi髇 
+	BCF ADCON0,2 					;Se finaliza la conversi贸n
+	MOVF ADRESH,0 					;Se lee el resultado de la conversi贸n 
 	MOVWF CANAL5					;Se guarda el tercer valor
 
 	;movf CANAL1, e 				;Nos movemos a canal1 en W
