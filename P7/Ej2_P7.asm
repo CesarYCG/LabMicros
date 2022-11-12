@@ -1,0 +1,69 @@
+processor 16f877
+include <p16f877.inc>
+	org 0
+	;Agrega  a T
+	T equ 0X21					; REGISTRO T PARA LEER POR TECLADO
+	contador equ h'20'			; Variable para recorrido
+	goto inicio					; VAMOS A INICIO
+	org 5
+								; INICIA CONFIGURACION DE REGISTROS PARA
+								; PUERTO SERIE SCI (ASINCRONO)
+inicio: bsf STATUS,RP0;			; CAMBIO DE BANCO 
+	bcf STATUS, RP1
+	; CONFIGURACION DE REGISTRO TXSTA PARA ASINCRONA 
+	bsf TXSTA, BRGH				; ALTA VELOCIDAD				
+	bcf TXSTA, SYNC				; MODO ASINCRONO
+	bsf TXSTA, TXEN				; ACTIVA TRANSMISION
+	movlw D'32'					; VALOR DECIMAL PARA BCRG -> W
+	movwf SPBRG					; DE W A REGISTRO SPBRG
+	clrf TRISB					; Limpiamos el registro TRISB PARA QUE LA ENTRADA SE REGISTRE	
+
+	bcf STATUS,RP0				; CAMBIAMOS DE BANCO
+	bsf RCSTA,SPEN				; PONE EN 1 EL REGISTRO SPEN DE RCSTA
+	bsf RCSTA, CREN				; PONE EN 1 EL REGISTRO CREN DE RCSTA
+
+recibe: btfss PIR1,RCIF			; BIT RCIF 1? SI, SALTA A MOVF ELSE VA A RECIBE
+	goto recibe					; VAMOS A RECIBE
+	movf RCREG, w				; COPIAMOS RCREG A W
+	movwf T						; COPIAMOS DE W A T
+
+loop: clrf PORTB				; PONEMOS PORTB EN CEROS
+	bcf STATUS,Z				; PONEMOS EN 0 Z DE STATUS
+	movf T,0					; MOVEMOS LO QUE HAY EN T (RCREG) AL REGISTRO ACUMULADOR (0)
+	xorlw A'0'					; XOR ENTRE ACUMULADOR Y EL NUMERO ASCII DE TECLADO "0"
+	btfsc STATUS,Z				; EL BIT Z DE STATUS ES 0? NO -> VAMOS A APAGADO | SI -> SALTA A SIG. INSTRUCCION.
+	goto apagado				; VAMOS A APAGADO
+	movf T,0					; MOVEMOS LO QUE HAY EN T (RCREG) AL REGISTRO ACUMULADOR (0)
+	xorlw A'1'					; XOR ENTRE ACUMULADOR Y EL ASCCI DE TECLADO "1"
+	btfsc STATUS,Z				; EL BIT Z DE STATUS ES 0? NO -> VAMOS A ENCENDIDO | SI -> XORLW CON A'2'
+	goto encendido				; VAMOS A ENCENDIDO
+	; CORRIMIENTO
+	movf T,0
+	xorlw A'2'					; XOR ENTRE ACUMULADOR Y ASCII DE TECLADO 
+	btfsc STATUS,Z				; Z es 0? NO -> Vamos a recorrido | Si -> Vamos a loop
+	goto recorrido 	
+	goto loop					; VAMOS A LOOP
+
+; funciones nuestras
+recorrido: rrf PORTB,1;
+	decf contador
+	btfss STATUS,Z
+	goto recorrido
+	goto loop
+
+apagado: clrf PORTB				; PONEMOS PORTB EN CEROS PARA APAGAR TODOS LOS LEDS
+	goto Recibe2				; VAMOS A RECIBE2
+
+encendido: movlw h'FF'			; CARGAMOS EL NUMERO FF EN EL ACUMULADOR W PARA ENCENDER TODOS LOS LEDS
+	movwf PORTB					; MOVEMOS EL DATO DE W A PORTB
+	goto Recibe2				; VAMOS A RECIBE2
+
+Recibe2: movf RCREG, w			; ESCRIBIMOS EL REGISTRO RCREG EN W
+	movwf TXREG					; ESCRIBIMOS DATO DE W EN TXREG (REGISTRO DE RECEPCION)
+	bsf STATUS,RP0				; PONEMOS EN 1 EL BIT RP0 DE STATUS
+
+transmite: btfss TXSTA,TRMT		; EVALUAMOS EL BIT TRMT DE TXSTA, ES 1? SI -> SALTAMOS A BCF | NO -> VAMOS A GOTO
+	goto transmite				; VAMOS A TRANSMITE
+	bcf STATUS,RP0				; PONEMOS EN 0 RP0 DE STATUS
+	goto recibe					; VAMOS A RECIBE
+END								; FIN DE INSTRUCCIONES

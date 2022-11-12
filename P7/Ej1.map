@@ -1,0 +1,58 @@
+MPLINK 4.46, Linker
+Linker Map File - Created Tue Nov 08 13:36:21 2022
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000002
+                   .org_2       code   0x000005    program   0x000082
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000005    0x000045      
+            66 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   Mando0   0x00003b    program     static E:\P7\Ej1.asm            
+                   Mando1   0x00003e    program     static E:\P7\Ej1.asm            
+                    canal   0x000028    program     static E:\P7\Ej1.asm            
+                canalCero   0x00002e    program     static E:\P7\Ej1.asm            
+                 canalDos   0x000038    program     static E:\P7\Ej1.asm            
+                 canalUno   0x000033    program     static E:\P7\Ej1.asm            
+                convierte   0x000011    program     static E:\P7\Ej1.asm            
+               convierte2   0x000019    program     static E:\P7\Ej1.asm            
+               convierte3   0x000020    program     static E:\P7\Ej1.asm            
+                   inicio   0x000005    program     static E:\P7\Ej1.asm            
+                     leer   0x00000f    program     static E:\P7\Ej1.asm            
+                     loop   0x000043    program     static E:\P7\Ej1.asm            
+                  retardo   0x000041    program     static E:\P7\Ej1.asm            
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   inicio   0x000005    program     static E:\P7\Ej1.asm            
+                     leer   0x00000f    program     static E:\P7\Ej1.asm            
+                convierte   0x000011    program     static E:\P7\Ej1.asm            
+               convierte2   0x000019    program     static E:\P7\Ej1.asm            
+               convierte3   0x000020    program     static E:\P7\Ej1.asm            
+                    canal   0x000028    program     static E:\P7\Ej1.asm            
+                canalCero   0x00002e    program     static E:\P7\Ej1.asm            
+                 canalUno   0x000033    program     static E:\P7\Ej1.asm            
+                 canalDos   0x000038    program     static E:\P7\Ej1.asm            
+                   Mando0   0x00003b    program     static E:\P7\Ej1.asm            
+                   Mando1   0x00003e    program     static E:\P7\Ej1.asm            
+                  retardo   0x000041    program     static E:\P7\Ej1.asm            
+                     loop   0x000043    program     static E:\P7\Ej1.asm            
+
+
