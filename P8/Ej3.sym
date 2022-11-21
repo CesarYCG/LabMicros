@@ -1,0 +1,54 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     var1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+001F00  loader16f877
+000004  MAIN
+000004  @cinit1
+00000D  @cinit2
+
+Project Directory:
+    C:\Users\Micros\Documents\P8\
+
+Project Files:
+    Ej3.c                                                   [14-nov-22 21:33  CRC=AF7108A1]
+    ..\..\..\..\Program Files (x86)\PICC\devices\16f877.h   [30-nov-12 17:59  CRC=5ABE99AD]
+
+Source signature=64EE3BFB
+
+Units:
+    Ej3 (main)
+
+Compiler Settings:
+    Processor:      PIC16F877
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      Ej3.err
+    Ext Symbols: Ej3.esym
+    INHX8:       Ej3.hex
+    Symbols:     Ej3.sym
+    List:        Ej3.lst
+    Debug/COFF:  Ej3.cof
+    Project:     Ej3.PJT
+    Call Tree:   Ej3.tre
+    Statistics:  Ej3.STA
