@@ -1,0 +1,239 @@
+CCS PCM C Compiler, Version 4.140, 21829               01-dic-22 18:55
+
+               Filename:   E:\P9\ej3.lst
+
+               ROM used:   409 words (5%)
+                           Largest free fragment is 2048
+               RAM used:   16 (4%) at main() level
+                           24 (7%) worst case
+               Stack:     2 worst case (1 in main + 1 for interrupts)
+
+*
+0000:  MOVLW  01
+0001:  MOVWF  0A
+0002:  GOTO   141
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   0A,W
+0009:  MOVWF  20
+000A:  CLRF   0A
+000B:  MOVF   04,W
+000C:  MOVWF  22
+000D:  MOVF   77,W
+000E:  MOVWF  23
+000F:  MOVF   78,W
+0010:  MOVWF  24
+0011:  MOVF   79,W
+0012:  MOVWF  25
+0013:  MOVF   7A,W
+0014:  MOVWF  26
+0015:  BCF    03.7
+0016:  BCF    03.5
+0017:  BTFSS  0B.5
+0018:  GOTO   01B
+0019:  BTFSC  0B.2
+001A:  GOTO   02C
+001B:  MOVF   22,W
+001C:  MOVWF  04
+001D:  MOVF   23,W
+001E:  MOVWF  77
+001F:  MOVF   24,W
+0020:  MOVWF  78
+0021:  MOVF   25,W
+0022:  MOVWF  79
+0023:  MOVF   26,W
+0024:  MOVWF  7A
+0025:  MOVF   20,W
+0026:  MOVWF  0A
+0027:  SWAPF  21,W
+0028:  MOVWF  03
+0029:  SWAPF  7F,F
+002A:  SWAPF  7F,W
+002B:  RETFIE
+002C:  BCF    0A.3
+002D:  BCF    0A.4
+002E:  GOTO   02F
+.................... #include <16f877.h>  //Incluir la biblioteca del pic 
+.................... //////// Standard Header file for the PIC16F877 device //////////////// 
+.................... #device PIC16F877 
+.................... #list 
+....................  
+.................... #device ADC=8, // Convertidor analogico digital con 8 
+.................... #fuses HS, NOPROTECT, // Configuración serie asincrona 
+.................... #use delay(clock=20000000) //Valor del cristal con el que trabajamos para calcular el retardo 
+*
+00AE:  MOVLW  2B
+00AF:  MOVWF  04
+00B0:  BCF    03.7
+00B1:  MOVF   00,W
+00B2:  BTFSC  03.2
+00B3:  GOTO   0C1
+00B4:  MOVLW  06
+00B5:  MOVWF  78
+00B6:  CLRF   77
+00B7:  DECFSZ 77,F
+00B8:  GOTO   0B7
+00B9:  DECFSZ 78,F
+00BA:  GOTO   0B6
+00BB:  MOVLW  7B
+00BC:  MOVWF  77
+00BD:  DECFSZ 77,F
+00BE:  GOTO   0BD
+00BF:  DECFSZ 00,F
+00C0:  GOTO   0B4
+00C1:  BCF    0A.3
+00C2:  BCF    0A.4
+00C3:  GOTO   177 (RETURN)
+.................... #use rs232(baud=38400,xmit=PIN_C6,rcv=PIN_C7) // Transmision rs232 C6 TRANS y C7 RECEP 
+.................... #org 0x1f00, 0x1FFF void loader16f877(void){} // Vector de SET (simpre se usa para compilar) 
+*
+1F00:  RETURN
+....................  
+.................... int conv; 
+.................... long cont=0;   //Contador para activar la interrupcion 
+....................  
+.................... // Funcion de interrupcion 
+.................... #int_RTCC 
+.................... clock_isr(){ 
+....................    cont++; // Incrementa contador 
+*
+002F:  INCF   28,F
+0030:  BTFSC  03.2
+0031:  INCF   29,F
+....................    // Determinamos 30 segundos 
+....................    if(cont==763*3){ 
+0032:  MOVF   28,W
+0033:  SUBLW  F1
+0034:  BTFSS  03.2
+0035:  GOTO   08E
+0036:  MOVF   29,W
+0037:  SUBLW  08
+0038:  BTFSS  03.2
+0039:  GOTO   08E
+....................       printf("Laboratorio de microcomputadoras\n"); 
+003A:  MOVLW  92
+003B:  BSF    03.6
+003C:  MOVWF  0D
+003D:  MOVLW  00
+003E:  MOVWF  0F
+....................       cont=0; 
+*
+008C:  CLRF   29
+008D:  CLRF   28
+....................    }//if 
+.................... }//clock_isr 
+....................  
+008E:  BCF    0B.2
+008F:  BCF    0A.3
+0090:  BCF    0A.4
+0091:  GOTO   01B
+.................... void main(){ 
+*
+0141:  CLRF   04
+0142:  BCF    03.7
+0143:  MOVLW  1F
+0144:  ANDWF  03,F
+0145:  MOVLW  20
+0146:  BSF    03.5
+0147:  MOVWF  19
+0148:  MOVLW  A6
+0149:  MOVWF  18
+014A:  MOVLW  90
+014B:  BCF    03.5
+014C:  MOVWF  18
+014D:  CLRF   29
+014E:  CLRF   28
+014F:  BSF    03.5
+0150:  BSF    1F.0
+0151:  BSF    1F.1
+0152:  BSF    1F.2
+0153:  BCF    1F.3
+....................    set_timer0(0); 
+0154:  BCF    03.5
+0155:  CLRF   01
+....................    setup_counters(RTCC_INTERNAL,RTCC_DIV_256); // Fuente reloj y predivisor 
+0156:  BSF    03.5
+0157:  MOVF   01,W
+0158:  ANDLW  C0
+0159:  IORLW  07
+015A:  MOVWF  01
+015B:  CLRWDT
+....................    enable_interrupts(INT_RTCC);  // Habilita interrupcion para timer0 
+015C:  BCF    03.5
+015D:  BSF    0B.5
+....................    enable_interrupts(GLOBAL); // Habilita interrupciones generales 
+015E:  MOVLW  C0
+015F:  IORWF  0B,F
+....................    setup_adc_ports(ALL_ANALOG); 
+0160:  BSF    03.5
+0161:  BCF    1F.0
+0162:  BCF    1F.1
+0163:  BCF    1F.2
+0164:  BCF    1F.3
+....................    setup_adc(ADC_CLOCK_INTERNAL); 
+0165:  BCF    03.5
+0166:  BSF    1F.6
+0167:  BSF    1F.7
+0168:  BSF    03.5
+0169:  BCF    1F.7
+016A:  BCF    03.5
+016B:  BSF    1F.0
+....................    set_adc_channel(7); 
+016C:  MOVLW  38
+016D:  MOVWF  78
+016E:  MOVF   1F,W
+016F:  ANDLW  C7
+0170:  IORWF  78,W
+0171:  MOVWF  1F
+....................    while(1){ 
+....................       delay_ms(2000); // 20ms retardo 
+0172:  MOVLW  08
+0173:  MOVWF  2A
+0174:  MOVLW  FA
+0175:  MOVWF  2B
+0176:  GOTO   0AE
+0177:  DECFSZ 2A,F
+0178:  GOTO   174
+....................       conv=read_adc(); 
+0179:  BSF    1F.2
+017A:  BTFSC  1F.2
+017B:  GOTO   17A
+017C:  MOVF   1E,W
+017D:  MOVWF  27
+....................       printf("El resultado es:=%x\n",conv); // Imprimimos 
+017E:  MOVLW  A3
+017F:  BSF    03.6
+0180:  MOVWF  0D
+0181:  MOVLW  00
+0182:  MOVWF  0F
+0183:  BCF    03.0
+0184:  MOVLW  11
+0185:  BCF    03.6
+0186:  MOVWF  2A
+0187:  GOTO   0C4
+0188:  MOVF   27,W
+0189:  MOVWF  2A
+018A:  MOVLW  57
+018B:  MOVWF  2B
+018C:  GOTO   11C
+018D:  MOVLW  0A
+018E:  BTFSS  0C.4
+018F:  GOTO   18E
+0190:  MOVWF  19
+....................       output_D(conv);   // SAlida en puerto D 
+0191:  BSF    03.5
+0192:  CLRF   08
+0193:  BCF    03.5
+0194:  MOVF   27,W
+0195:  MOVWF  08
+....................    }//while 
+0196:  GOTO   172
+.................... }//main 
+....................  
+0197:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

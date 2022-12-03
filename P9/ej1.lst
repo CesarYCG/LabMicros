@@ -1,0 +1,136 @@
+CCS PCM C Compiler, Version 4.140, 21829               01-dic-22 18:37
+
+               Filename:   E:\P9\ej1.lst
+
+               ROM used:   231 words (3%)
+                           Largest free fragment is 2048
+               RAM used:   6 (2%) at main() level
+                           11 (3%) worst case
+               Stack:     2 worst case (1 in main + 1 for interrupts)
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   0A2
+0003:  NOP
+.................... #include <16f877.h>  //Incluir la biblioteca del pic 
+.................... //////// Standard Header file for the PIC16F877 device //////////////// 
+.................... #device PIC16F877 
+.................... #list 
+....................  
+.................... #device ADC=8, // Convertidor analogico digital con 8 
+.................... #fuses HS, NOPROTECT, // Configuración serie asincrona 
+.................... #use delay(clock=20000000) //Valor del cristal con el que trabajamos para calcular el retardo 
+*
+000F:  MOVLW  21
+0010:  MOVWF  04
+0011:  BCF    03.7
+0012:  MOVF   00,W
+0013:  BTFSC  03.2
+0014:  GOTO   022
+0015:  MOVLW  06
+0016:  MOVWF  78
+0017:  CLRF   77
+0018:  DECFSZ 77,F
+0019:  GOTO   018
+001A:  DECFSZ 78,F
+001B:  GOTO   017
+001C:  MOVLW  7B
+001D:  MOVWF  77
+001E:  DECFSZ 77,F
+001F:  GOTO   01E
+0020:  DECFSZ 00,F
+0021:  GOTO   015
+0022:  BCF    0A.3
+0023:  BCF    0A.4
+0024:  GOTO   0C7 (RETURN)
+.................... #use rs232(baud=38400,xmit=PIN_C6,rcv=PIN_C7) // Transmision rs232 C6 TRANS y C7 RECEP 
+.................... #org 0x1f00, 0x1FFF void loader16f877(void){} // Vector de SET (simpre se usa para compilar) 
+*
+1F00:  RETURN
+.................... int converse; 
+....................  
+.................... void main(){ 
+*
+00A2:  CLRF   04
+00A3:  BCF    03.7
+00A4:  MOVLW  1F
+00A5:  ANDWF  03,F
+00A6:  MOVLW  20
+00A7:  BSF    03.5
+00A8:  MOVWF  19
+00A9:  MOVLW  A6
+00AA:  MOVWF  18
+00AB:  MOVLW  90
+00AC:  BCF    03.5
+00AD:  MOVWF  18
+00AE:  BSF    03.5
+00AF:  BSF    1F.0
+00B0:  BSF    1F.1
+00B1:  BSF    1F.2
+00B2:  BCF    1F.3
+....................    setup_adc_ports(ALL_ANALOG); // Todos los puertos analogicos (PORTA y PORTE) 
+00B3:  BCF    1F.0
+00B4:  BCF    1F.1
+00B5:  BCF    1F.2
+00B6:  BCF    1F.3
+....................    setup_adc(ADC_CLOCK_INTERNAL); //ADCON0 trabajando con oscilador interno 
+00B7:  BCF    03.5
+00B8:  BSF    1F.6
+00B9:  BSF    1F.7
+00BA:  BSF    03.5
+00BB:  BCF    1F.7
+00BC:  BCF    03.5
+00BD:  BSF    1F.0
+....................    set_adc_channel(7); // Habilita el CANAL 
+00BE:  MOVLW  38
+00BF:  MOVWF  78
+00C0:  MOVF   1F,W
+00C1:  ANDLW  C7
+00C2:  IORWF  78,W
+00C3:  MOVWF  1F
+....................     
+....................    while(1){ 
+....................       delay_ms(20);  //Retardo de 20 ms 
+00C4:  MOVLW  14
+00C5:  MOVWF  21
+00C6:  GOTO   00F
+....................       converse=read_adc();    // Guardamos conversion en converse 
+00C7:  BSF    1F.2
+00C8:  BTFSC  1F.2
+00C9:  GOTO   0C8
+00CA:  MOVF   1E,W
+00CB:  MOVWF  20
+....................       printf("El resultado es:=%x\n",converse); // Imprimimos converse 
+00CC:  MOVLW  04
+00CD:  BSF    03.6
+00CE:  MOVWF  0D
+00CF:  MOVLW  00
+00D0:  MOVWF  0F
+00D1:  BCF    03.0
+00D2:  MOVLW  11
+00D3:  BCF    03.6
+00D4:  MOVWF  21
+00D5:  GOTO   025
+00D6:  MOVF   20,W
+00D7:  MOVWF  21
+00D8:  MOVLW  57
+00D9:  MOVWF  22
+00DA:  GOTO   07D
+00DB:  MOVLW  0A
+00DC:  BTFSS  0C.4
+00DD:  GOTO   0DC
+00DE:  MOVWF  19
+....................       output_D(converse);  // Mostramos el resultado en el puerto B 
+00DF:  BSF    03.5
+00E0:  CLRF   08
+00E1:  BCF    03.5
+00E2:  MOVF   20,W
+00E3:  MOVWF  08
+....................    }//while 
+00E4:  GOTO   0C4
+.................... }//main 
+00E5:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

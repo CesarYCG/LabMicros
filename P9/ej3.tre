@@ -1,0 +1,9 @@
+ÀÄej3
+   ÃÄMAIN  0/87  Ram=1
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄ@delay_ms1  0/22  Ram=1
+   ³  ÃÄ@PSTRINGCN7_38400_62_63  0/88  Ram=5
+   ³  ÀÄ@PRINTF_X_38400_62_63  0/37  Ram=2
+   ÃÄloader16f877  3/1  Ram=0
+   ÀÄclock_isr  0/99  Ram=0
+      ÀÄ@PSTRINGC7_38400_62_63  (Inline)  Ram=4

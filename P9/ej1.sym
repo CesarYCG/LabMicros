@@ -1,0 +1,66 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     converse
+021     @PSTRINGCN7_38400_62_63.P1
+021     @PRINTF_X_38400_62_63.P2
+021     @delay_ms1.P3
+022     @PRINTF_X_38400_62_63.P1
+022     @PSTRINGCN7_38400_62_63.@SCRATCH1
+023     @PSTRINGCN7_38400_62_63.@SCRATCH2
+024     @PSTRINGCN7_38400_62_63.@SCRATCH3
+025     @PSTRINGCN7_38400_62_63.@SCRATCH4
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+00000F  @delay_ms1
+001F00  loader16f877
+0000A2  MAIN
+000004  @const71
+000025  @PSTRINGCN7_38400_62_63
+00007D  @PRINTF_X_38400_62_63
+0000A2  @cinit1
+0000B3  @cinit2
+
+Project Directory:
+    E:\P9\
+
+Project Files:
+    ej1.c                                                   [01-dic-22 18:37  CRC=2E142C5E]
+    C:\Program Files (x86)\PICC\devices\16f877.h            [30-nov-12 17:59  CRC=5ABE99AD]
+
+Source signature=E3915FB8
+
+Units:
+    ej1 (main)
+
+Compiler Settings:
+    Processor:      PIC16F877
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      ej1.err
+    Ext Symbols: ej1.esym
+    INHX8:       ej1.hex
+    Symbols:     ej1.sym
+    List:        ej1.lst
+    Debug/COFF:  ej1.cof
+    Project:     ej1.PJT
+    Call Tree:   ej1.tre
+    Statistics:  ej1.STA
